@@ -15,7 +15,7 @@ module.exports = function (deployer) {
       return deploy.GetTokenName();
     }).then(function (tokenName) {
       console.log("tokenName", tokenName);
-      return deploy.balanceOf("0x122369f04f32269598789998de33e3d56e2c507a")
+      return deploy.GetAmount("0x122369f04f32269598789998de33e3d56e2c507a")
     }).then(function (balance) {
       console.log("balance", balance.toString());
     })
