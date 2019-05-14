@@ -1,5 +1,5 @@
-var Migrations = artifacts.require("./contracts/Migrations.c");
-var ERC20 = artifacts.require("./contracts/Erc20.c")
+var Migrations = artifacts.require("../contracts/Migrations.c");
+var ERC20 = artifacts.require("../contracts/Erc20.c")
 
 module.exports = function (deployer) {
   deployer.deploy(Migrations).then(function () {
