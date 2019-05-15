@@ -1,8 +1,10 @@
 var ERC20 = artifacts.require("../contracts/Erc20.c")
 
-module.exports = function (deployer) {
+var deploy;
+module.exports = function (deployer, a) {
     deployer.deploy(ERC20, "1000000", "bitcoin", "BTC").then(function (instance) {
         deploy = instance;
+        console.log("deploy address", deploy.address);
         return deploy.GetTotalSupply()
     }).then(function (totalSupply) {
         console.log("totalSupply", totalSupply.toString());
