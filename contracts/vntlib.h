@@ -26,7 +26,7 @@
 
 #define now GetTimestamp() //获取区块生成的时间戳
 
-//Time units
+// Time units
 //#define years(n) (60 * 60 * 24 * 365 * n)UL;
 #define years(n) n * 31536000UL
 //#define weeks(n) (60 * 60 * 24 * 7 * n)UL;
@@ -79,8 +79,13 @@ uint64 GetBlockNumber();
 uint64 GetTimestamp();
 //获取区块生产者的地址
 address GetBlockProduser();
-// SHA3加密运算
+// SHA3加密运算,返回以0x开头的十六进制字符串
 string SHA3(string data);
+// Ecrecover,参数hash,v,r,s都需要转化成十六进制字符串
+// example
+// Ecrecover("0x8309e99c09154c8f03d373c270965cf6d2be0af1fc1395e518596c4d7945b989",\
+"0x1c","0xdd3d526fb1154524d4c61a9e673d4bfc6fcc9fdcce39108a8486437196dd828b","0x5d7b80ae2985f43a817e1043ac02f6d421e9704b9bb31f4c3211aac9493d0d91")
+address Ecrecover(string hash, string v, string r, string s);
 //获取剩余GAS
 uint64 GetGas();
 //获取当前交易的GasLimit
@@ -179,7 +184,7 @@ void InitializeVariables();
 uint64 Pow(uint64 x, uint64 y);
 
 //以下为uint256类型的数学运算函数
-/// UINT256
+// UINT256
 // uint64转成uint256
 uint256 U256FromU64(uint64 x);
 // int64转成uint256
@@ -194,8 +199,19 @@ uint256 U256_Mul(uint256 x, uint256 y);
 uint256 U256_Div(uint256 x, uint256 y);
 //取余
 uint256 U256_Mod(uint256 x, uint256 y);
-// Pow
+//Pow
 uint256 U256_Pow(uint256 x, uint256 y);
+//Left shift
+uint256 U256_Shl(uint256 value, uint256 shift);
+//Right shift
+uint256 U256_Shr(uint256 value, uint256 shift);
+//And
+uint256 U256_And(uint256 x, uint256 y);
+//Or
+uint256 U256_Or(uint256 x, uint256 y);
+//Xor
+uint256 U256_Xor(uint256 x, uint256 y);
+
 //比较运算
 // Cmp compares x and y and returns:
 //
